@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { CalculatorButton } from "../calculator-button/calculator-button";
 
 @Component({
@@ -6,6 +6,9 @@ import { CalculatorButton } from "../calculator-button/calculator-button";
   imports: [CalculatorButton],
   templateUrl: './calculator.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(document:keyup)': 'handleKeyboardEvent($event)'
+  }
   // styles: `
   //   @reference "../../../../styles.css";
 
@@ -15,8 +18,13 @@ import { CalculatorButton } from "../calculator-button/calculator-button";
   // `
 })
 export class Calculator {
-  
+
   handleClick(key: string){
     console.log({key})
+  }
+
+  // @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent){
+    this.handleClick(event.key);
   }
 }

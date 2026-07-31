@@ -11,3 +11,7 @@ button {
 .is-command{
   @apply bg-indigo-700/10 text-2xl;
 }
+
+.is-pressed{
+  @apply bg-indigo-700/10 text-2xl;
+}
