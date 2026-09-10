@@ -8,10 +8,10 @@ button {
   @apply bg-indigo-700/10 text-2xl;
 } */
 
-.is-command{
+.is-command {
   @apply bg-indigo-700/10 text-2xl;
 }
 
-.is-pressed{
-  @apply bg-indigo-700/10 text-2xl;
+.is-pressed {
+  @apply bg-indigo-700/20 text-2xl;
 }

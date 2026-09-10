@@ -7,7 +7,9 @@ import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, input, OnI
   styleUrl: './calculator-button.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: 'w-1/4 border-r border-b border-indigo-400'
+    class: 'w-1/4 border-r border-b border-indigo-400',
+    '[class.w-2/4]': 'isDoubleSize()',
+    '[class.w-1/4]': '!isDoubleSize()'
   },
   // encapsulation: ViewEncapsulation.None,
 })
@@ -27,9 +29,9 @@ export class CalculatorButton {
       typeof value === 'string' ? value === '' : value
   })
 
-  @HostBinding('class.w-2/4') get commandStyle(){
-    return this.isDoubleSize();
-  }
+  // @HostBinding('class.w-2/4') get commandStyle(){
+  //   return this.isDoubleSize();
+  // }
 
   handleClick(){
     if(!this.contentValue()?.nativeElement) return;
