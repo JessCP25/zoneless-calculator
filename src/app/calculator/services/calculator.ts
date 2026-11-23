@@ -57,7 +57,7 @@ export class CalculatorService {
     }
 
     if(this.resultText().length >= 10){
-      console.log('Maxim length');
+      console.log('Max length reached');
       return;
     }
 

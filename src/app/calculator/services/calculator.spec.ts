@@ -150,20 +150,31 @@ describe('CalculatorService', () => {
   });
 
   it('should handle max length', () => {
-    for (let i = 0; i < 10; i++) {
+    const consoleSpy = vi.spyOn(console, 'log');
+
+    consoleSpy.mockImplementation(()=> {});
+
+    for (let i = 0; i < 20; i++) {
       service.constructNumber('1');
     }
 
     expect(service.resultText().length).toBe(10);
-    expect(service.resultText()).toBe('1111111111')
+    expect(service.resultText()).toBe('1111111111');
+    expect(consoleSpy).toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalledTimes(10);
   });
 
   it('should handle invalid input', () => {
+    const consoleSpy = vi.spyOn(console, 'log');
+
     service.resultText.set('15');
     service.constructNumber('A');
+
+    expect(consoleSpy).toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalledWith('Invalid value','A');
   });
 
-  it('should handle negative zero input correctly', () => {
-    // todo:
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 });
